@@ -9,7 +9,7 @@ class PageController extends Controller
 {
     public function index() {
 
-        $trains = Trains::all();
+        $trains = Trains::whereDate('departure_time', '2024-05-24')->get();
 
         return view('home', compact('trains'));
     }
