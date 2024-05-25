@@ -19,4 +19,10 @@ php artisan make:controller NomeController
 
 8. In web.php ho collegato la funzione nel Controller, assegnandogli come secondo parametro un array [NomeController::class, 'nome_metodo'].
 
-9. Nella pagina di destinazione, dove stampare i valori, ho creato un @foreach//@endforeach così da poter leggere le proprietà ed i rispettivi valori.
+9. Nel file home.blade.php, dove stampare i valori, ho creato un @foreach//@endforeach così da poter leggere le proprietà ed i rispettivi valori.
+
+10. Nel file PageController applico un filtro di ricerca per la stampa del biglietto in data odierna:
+$istanza = NomeModels::whereDate('colonna', date_create())->get();
+[$train = Trains::whereDate('departure_time', date_create())->get()]
+
+11. Applico un controllo nel file home.blade.php, in cui dichiaro che se la proprietà on_time è pari a 0, allora stampo nella colonna deleted se il treno è in orario oppure no.
