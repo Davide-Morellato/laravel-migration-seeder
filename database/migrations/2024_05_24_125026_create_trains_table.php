@@ -20,8 +20,8 @@ return new class extends Migration
             $table->dateTime('arrival_time', $precision=0);
             $table->mediumInteger('train_code');
             $table->tinyInteger('coaches_numbers');
-            $table->boolean('on_time');
-            $table->string('deleted', 5)->nullable();
+            $table->boolean('on_time')->default(true);
+            $table->boolean('deleted')->default(false);
             $table->timestamps(); //data attuale
             
         });
