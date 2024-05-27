@@ -34,9 +34,9 @@
                         <td>{{$train->coaches_numbers}}</td>
                         <td>{{$train->on_time}}</td>
                         @if($train->on_time === 1)
-                        <td>{{$train->deleted}} il treno è in orario</td>
+                        <td>il treno è in orario</td>
                         @else
-                        <td>{{$train->deleted}} il treno è in ritardo</td>
+                        <td>il treno è in ritardo</td>
                         @endif
                     </tr>
                     @endforeach
