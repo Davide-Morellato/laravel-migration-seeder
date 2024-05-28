@@ -15,38 +15,38 @@ class TrainsSeeder extends Seeder
      */
     public function run(Faker $faker): void
     {
-        DB::table('trains')->truncate(); //per non generare nuovi valori
+        DB::table('trains')->truncate(); //per cancellare i dati nella tabella
 
-        $company=['Italo', 'Trenitalia'];
+        $companies=['Italo', 'Trenitalia'];
 
         for($i = 0; $i < 10; $i++){
-            $train = new Trains();
+            $new_train = new Trains();
 
-            $train -> company = $faker->randomElement($company);
+            $new_train -> company = $faker->randomElement($companies);
 
-            $train -> departure_trains_station = $faker->city();
+            $new_train -> departure_trains_station = $faker->city();
             // if(!$train -> departure_trains_station){
             //     $train -> arrival_trains_station = $faker->city();
             // };
 
             do{
-                $train -> arrival_trains_station = $faker->city();
-            }while($train -> departure_trains_station === $train -> arrival_trains_station);
+                $new_train -> arrival_trains_station = $faker->city();
+            }while($new_train -> departure_trains_station === $new_train -> arrival_trains_station);
             
-            $train -> departure_time = $faker->dateTimeBetween('now', '+1 day');
-            $train -> arrival_time = $faker->dateTimeInInterval($train -> departure_time, '+1 day');
+            $new_train -> departure_time = $faker->dateTimeBetween('now', '+1 day');
+            $new_train -> arrival_time = $faker->dateTimeInInterval($new_train -> departure_time, '+1 day');
 
-            $train -> train_code = $faker->numberBetween(1000, 9999);
-            $train -> coaches_numbers = $faker->numberBetween(3, 11);
+            $new_train -> train_code = $faker->numberBetween(1000, 9999);
+            $new_train -> coaches_numbers = $faker->numberBetween(3, 11);
 
-            $train -> on_time = $faker->boolean();
-            if($train -> on_time === true){
-                $train -> deleted = false;
+            $new_train -> on_time = $faker->boolean();
+            if($new_train -> on_time === true){
+                $new_train -> deleted = false;
             }else{
-                $train -> deleted = $faker->boolean();
+                $new_train -> deleted = $faker->boolean();
             }
 
-            $train -> save();
+            $new_train -> save();
         }
 
 
