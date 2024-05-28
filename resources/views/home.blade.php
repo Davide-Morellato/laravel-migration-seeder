@@ -32,11 +32,15 @@
                         <td>{{$train->arrival_time}}</td>
                         <td>{{$train->train_code}}</td>
                         <td>{{$train->coaches_numbers}}</td>
-                        <td>{{$train->on_time}}</td>
                         @if($train->on_time === 1)
-                        <td>il treno è in orario</td>
+                        <td>In orario</td>
                         @else
-                        <td>il treno è in ritardo</td>
+                        <td>In ritardo</td>
+                        @endif
+                        @if($train->on_time === 1)
+                        <td></td>
+                        @else
+                        <td>Cancellato</td>
                         @endif
                     </tr>
                     @endforeach
